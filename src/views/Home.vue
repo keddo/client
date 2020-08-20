@@ -1,9 +1,8 @@
 <template>
   <div class="home">
-  
-      <div class="row m-5 px-4">
-        <div class="container">
-    <form class="mb-4" @submit.prevent="addMessage">
+    <div class="container my-4">
+      <button @click="showMessageForm = !showMessageForm" type="button" class="btn btn-info mb-4">Toogle Form</button>
+    <form v-if="showMessageForm" class="mb-4" @submit.prevent="addMessage">
     <div class="form-group">
       <label for="username">User Name:</label>
       <input v-model="message.username" type="text" class="form-control" id="username" placeholder="Anonymous" required>
@@ -31,7 +30,6 @@
       </div>  
       </div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -41,6 +39,7 @@ const API_URL = 'http://localhost:1234/messages';
 export default {
   name: 'Home',
   data: () => ({
+    showMessageForm: false,
     messages: [],
     message: {
       username: '',
