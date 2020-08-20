@@ -22,7 +22,7 @@
     </div>
     <button type="submit" class="btn btn-primary">Add Message</button>
 </form>
-        <div class="media mb-3" v-for="message in messages" :key="message._id">
+        <div class="media mb-3" v-for="message in reversedMessages" :key="message._id">
         <img :src="message.imageUrl" class="mr-3" :alt="message.subject" width="200" height="200">
         <div class="media-body">
           <h5 class="mt-0">{{message.subject}}</h5>
@@ -49,6 +49,11 @@ export default {
       imageUrl: ''
     }
   }),
+  computed: {
+    reversedMessages(){
+      return this.messages.slice().reverse();
+    }
+  },
   mounted() {
     fetch(API_URL)
       .then((res) => res.json())
