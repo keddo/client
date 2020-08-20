@@ -72,7 +72,7 @@ export default {
       })
       .then(response => response.json())
       .then(data => {
-        console.log('Success:', data);
+        this.messages.push(data);
       })
     }
   }
